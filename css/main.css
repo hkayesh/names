@@ -1,0 +1,49 @@
+body {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+    /*background: url('../images/frames/bg-frame.jpg') no-repeat center center;*/
+    text-align: center;
+}
+
+.letter-image {
+    height: 158px;
+    width: 105px;
+}
+
+.letter-image-small {
+    height: 127px;
+    width: 85px;
+}
+
+.letter-image-thumb {
+    height: 200px;
+    width: 133px;
+}
+
+.non-underline {
+    text-decoration: none;
+}
+
+.modal-header {
+    background-color: #428bca;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+input.word {
+    background: url("../images/bg-text-box.jpg") repeat scroll 50% 50% rgba(0, 0, 0, 0);
+    border: 1px solid #aaa8a5;
+    color: #3f403d;
+    font: italic 80px/1.5 Georgia,"Times New Roman",serif;
+    height: 153px;
+    text-align: center;
+    width: 790px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
