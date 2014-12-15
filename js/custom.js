@@ -14,6 +14,7 @@ function getImages(inputWord) {
     request.done(function(response) {
         $(".js-word-content").html(response);
         $(".js-buttons").html(buttons);
+        $(".js-word-box-title").html('<h2>Click to change images!</h2>');
     });
 
     request.fail(function(jqXHR, errMeggage) {
@@ -66,9 +67,10 @@ function removeImage(strPath, strName) {
 
 function clearWord() {
     var button = "<div class='text-warning'>Enter only letters or *</div><br><a class='btn btn-lg btn-success js-submit-word' href='javascript:void(0)'>Create My Name</a>";
-    var inputForm = "<form action='' method='post'>"
-        + "<input type='text' name='word' class='word js-word' maxlength='12'/></form>";
+    var inputForm = "<form action='javascript:void(0)' method='post'>"
+        + "<input type='text' name='word' class='word js-word' maxlength='12' autocomplete='off'/></form>";
 
+    $(".js-word-box-title").html('<h2>Enter your name</h2>');
     $(".js-word-content").html(inputForm);
     $(".js-buttons").html(button);
 }
@@ -137,14 +139,16 @@ $(document).on('click','.js-replace-with', function(){
     $(toReplaceElement).attr('name', varReplaceWithImageName);
 });
 
-$('.js-word').bind("enterKey",function(e){
-    console.log('hi');
-    var word = $('.js-word').val();
-    $('.js-error').addClass('hidden');
-    if(word.length > 0 && word.match(/^[a-zA-Z\*]+$/)) {
-        getImages(word);
-    }
-    else {
-        $('.js-error').removeClass('hidden');
+$(document).on("keydown", '.js-word',function(e){
+    var key = e.which;
+    if (key == 13) {  // Enter pressed
+        var word = $('.js-word').val();
+        $('.js-error').addClass('hidden');
+        if(word.length > 0 && word.match(/^[a-zA-Z\*]+$/)) {
+            getImages(word);
+        }
+        else {
+            $('.js-error').removeClass('hidden');
+        }
     }
 });

@@ -5,8 +5,11 @@ body {
 
 /* Main marketing message and sign up button */
 .jumbotron {
-    /*background: url('../images/frames/bg-frame.jpg') no-repeat center center;*/
     text-align: center;
+}
+
+.use-frame {
+    background: url('../images/frames/sherry-frame.jpg') no-repeat 50% 50% rgba(0, 0, 0, 0);
 }
 
 .letter-image {
@@ -41,7 +44,7 @@ input.word {
     font: italic 80px/1.5 Georgia,"Times New Roman",serif;
     height: 153px;
     text-align: center;
-    width: 790px;
+    width: 80%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
