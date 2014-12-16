@@ -38,6 +38,7 @@
 
                         if(data == 'success') {
                             $('.js-success').removeClass('hidden');
+                            getImagesToRemove();
                         }
                         else {
                             $('.js-error').removeClass('hidden');
@@ -74,7 +75,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">Select Letter</label>
                 <div class="col-md-4">
-                    <select name="letter" name="letter" class="form-control js-letter">
+                    <select name="letter" name="letter" class="form-control js-letter js-remove-letter">
                         <option value="" selected disabled>Select</option>
                         <option value="a">A</option>
                         <option value="b">B</option>
@@ -102,7 +103,6 @@
                         <option value="x">X</option>
                         <option value="y">Y</option>
                         <option value="z">Z</option>
-                        <option value="1">*</option>
                     </select>
                 </div>
             </div>
@@ -123,6 +123,13 @@
                 </div>
             </div>
         </form>
+    </div>
+
+    <div class="jumbotron js-to-remove-content">
+        <legend>Click on the image to remove it!</legend>
+        <div class="js-image-content">
+            <div class="text-center col-lg-12">No image to remove</div>
+        </div>
     </div>
 
 

@@ -75,6 +75,7 @@ function clearWord() {
     $(".js-word-content").html(inputForm);
     $(".js-buttons").html(button);
     $('.js-name-list').addClass('hidden');
+    $('.js-word').focus();
 }
 
 function viewAllImages(letter, toReplaceIndex) {
@@ -120,6 +121,12 @@ $(document).ready(function() {
 
     $('.js-reset').click(function() {
         $('.js-submit').attr('disabled', 'disabled');
+    });
+
+    $('.js-word').focus();
+
+    $('.js-remove-letter').change(function() {
+        getImagesToRemove();
     });
 });
 
