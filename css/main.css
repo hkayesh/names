@@ -50,3 +50,10 @@ input.word {
     text-align: center;
     width: 100%;
 }
+
+.modal-dialog-center {
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 28%;
+}

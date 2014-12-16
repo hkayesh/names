@@ -129,6 +129,15 @@ $(document).ready(function() {
         getImagesToRemove();
     });
 });
+$(document).ajaxStart(function() {
+    $('#modalLoading').modal({
+        keyboard:false
+    });
+});
+
+$(document).ajaxStop(function() {
+    $('#modalLoading').modal('hide');
+});
 
 $(document).on('click','.js-submit-word', function(){
     var word = $('.js-word').val();
