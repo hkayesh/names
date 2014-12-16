@@ -20,15 +20,16 @@ class NameGenerator {
         $intCount = 0;
         foreach($arrLetters as $strLetter) {
             $arrFiles = array_diff(scandir("../images/letters/". $strLetter ."/", 1), array('..', '.'));
+            sort($arrFiles);
             $intNumberOfImages = count($arrFiles);
             $intRandomNumber = rand(0, $intNumberOfImages-1);
             if($intNumberOfImages > 0) {
                 $strSource = "images/letters/".$strLetter . "/" .$arrFiles[$intRandomNumber];
-                $strResponse .= "<a href='javascript:void(0)'><img class='$strImageSizeClass js-letter-image' src='" . $strSource . "' data-letter='$strLetter' data-index = '$intCount' id='$arrFiles[$intRandomNumber]' data-toggle='modal' data-target='#myModal'/></a>";
+                $strResponse .= "<a href='javascript:void(0)'><img class='$strImageSizeClass img-thumbnail js-letter-image' src='" . $strSource . "' data-letter='$strLetter' data-index = '$intCount' name='$arrFiles[$intRandomNumber]' data-toggle='modal' data-target='#myModal' data-letter-index='" . ($intRandomNumber+1) . "'/></a>";
             }
             else {
                 $strSource = "images/no-image-found.jpg";
-                $strResponse .= "<img class='$strImageSizeClass' src='" . $strSource . "' />";
+                $strResponse .= "<img class='$strImageSizeClass img-thumbnail' src='" . $strSource . "' />";
             }
             $intCount++;
         }

@@ -9,11 +9,15 @@ body {
 }
 
 .use-frame {
-    background: url('../images/frames/sherry-frame.jpg') no-repeat 50% 50% rgba(0, 0, 0, 0);
+    background: url('../images/frames/frame1142x276.png') no-repeat 50% 50% rgba(0, 0, 0, 0);
+    margin-bottom: 10px;
+}
+.name-list {
+    margin-bottom: 10px;
 }
 
 .letter-image {
-    height: 158px;
+    height: 156px;
     width: 105px;
 }
 
@@ -38,15 +42,11 @@ body {
 }
 
 input.word {
-    background: url("../images/bg-text-box.jpg") repeat scroll 50% 50% rgba(0, 0, 0, 0);
-    border: 1px solid #aaa8a5;
+    /*background: url("../images/bg-text-box.jpg") repeat scroll 50% 50% rgba(0, 0, 0, 0);*/
+    border: 1px solid #ffffff;
     color: #3f403d;
     font: italic 80px/1.5 Georgia,"Times New Roman",serif;
-    height: 153px;
+    height: 156px;
     text-align: center;
-    width: 80%;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    width: 100%;
 }

@@ -40,10 +40,10 @@
     <hr>
     <div class="row">
         <div class="col-lg-12 text-center js-word-box-title">
-            <h2>Enter your name</h2>
+            <h3>Enter your name</h3>
         </div>
     </div>
-    <div class="alert alert-danger hidden js-error" role="alert">Please enter only letters or *</div>
+    <div class="alert alert-danger hidden js-error" role="alert">Please enter only letters</div>
     <div class="jumbotron use-frame">
         <p class="padding-space"></p>
         <div class="js-word-content">
@@ -55,9 +55,13 @@
         <div class="clear"></div>
     </div>
     <div class="row">
+        <div class="col-lg-12 text-center name-list js-name-list hidden">
+                <span>You have chosen: </span>
+                <span class="js-list"></span>
+            <div class="text-center"><i>Please copy and paste this selection into your order.</i></div>
+        </div>
         <div class="col-lg-12">
             <div class="text-center js-buttons">
-                <div class="text-warning">Enter only letters or *</div><br>
                 <a class="btn btn-lg btn-success js-submit-word" href="javascript:void(0)">Create My Name</a>
             </div>
         </div>

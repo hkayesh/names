@@ -14,7 +14,8 @@ function getImages(inputWord) {
     request.done(function(response) {
         $(".js-word-content").html(response);
         $(".js-buttons").html(buttons);
-        $(".js-word-box-title").html('<h2>Click to change images!</h2>');
+        $(".js-word-box-title").html('<h4>Click on any image to see alternate choices.</h4>');
+        getImageNames();
     });
 
     request.fail(function(jqXHR, errMeggage) {
@@ -66,13 +67,14 @@ function removeImage(strPath, strName) {
 }
 
 function clearWord() {
-    var button = "<div class='text-warning'>Enter only letters or *</div><br><a class='btn btn-lg btn-success js-submit-word' href='javascript:void(0)'>Create My Name</a>";
+    var button = "<a class='btn btn-lg btn-success js-submit-word' href='javascript:void(0)'>Create My Name</a>";
     var inputForm = "<form action='javascript:void(0)' method='post'>"
         + "<input type='text' name='word' class='word js-word' maxlength='12' autocomplete='off'/></form>";
 
-    $(".js-word-box-title").html('<h2>Enter your name</h2>');
+    $(".js-word-box-title").html('<h3>Enter your name</h3>');
     $(".js-word-content").html(inputForm);
     $(".js-buttons").html(button);
+    $('.js-name-list').addClass('hidden');
 }
 
 function viewAllImages(letter, toReplaceIndex) {
@@ -94,7 +96,21 @@ function viewAllImages(letter, toReplaceIndex) {
     });
 }
 
-$(document).ready(function(){
+function getImageNames() {
+    var nameList = '';
+    $('.js-word-content').find('img').each(function() {
+        if($(this)) {
+            var letter = $(this).attr('data-letter').toUpperCase();
+            var imageIndex = $(this).attr('data-letter-index');
+            nameList += ' <span>'+letter+imageIndex+'</span>';
+        }
+    });
+    console.log(nameList);
+    $('.js-list').html(nameList);
+    $('.js-name-list').removeClass('hidden');
+}
+
+$(document).ready(function() {
     $('.js-user-image, .js-letter').change(function() {
         $('.js-error, .js-success').addClass('hidden');
         if($('.js-letter').val() && $('.js-user-image').val()){
@@ -102,7 +118,7 @@ $(document).ready(function(){
         }
     });
 
-    $('.js-reset').click(function(){
+    $('.js-reset').click(function() {
         $('.js-submit').attr('disabled', 'disabled');
     });
 });
@@ -110,7 +126,7 @@ $(document).ready(function(){
 $(document).on('click','.js-submit-word', function(){
     var word = $('.js-word').val();
     $('.js-error').addClass('hidden');
-    if(word.length > 0 && word.match(/^[a-zA-Z\*]+$/)) {
+    if(word.length > 0 && word.match(/^[a-zA-Z]+$/)) {
         getImages(word);
     }
     else {
@@ -132,11 +148,16 @@ $(document).on('click','.js-replace-image', function(){
 
 $(document).on('click','.js-replace-with', function(){
     var toBeReplacedIndex = $(this).attr('data-to-replace-index');
-    var varReplaceWithImageName = $(this).attr('name');
-    var varReplaceWithImageSrc = $(this).attr('src');
+    var replaceWithImageName = $(this).attr('name');
+    var replaceWithImageSrc = $(this).attr('src');
+    var letter = $(this).attr('data-letter');
+    var letterIndex = $(this).attr('data-letter-index');
     var toReplaceElement = $('.js-word-content').find('img:eq('+toBeReplacedIndex+')');
-    $(toReplaceElement).attr('src', varReplaceWithImageSrc);
-    $(toReplaceElement).attr('name', varReplaceWithImageName);
+    $(toReplaceElement).attr('src', replaceWithImageSrc);
+    $(toReplaceElement).attr('name', replaceWithImageName);
+    $(toReplaceElement).attr('data-letter', letter);
+    $(toReplaceElement).attr('data-letter-index', letterIndex);
+    getImageNames();
 });
 
 $(document).on("keydown", '.js-word',function(e){
@@ -144,7 +165,7 @@ $(document).on("keydown", '.js-word',function(e){
     if (key == 13) {  // Enter pressed
         var word = $('.js-word').val();
         $('.js-error').addClass('hidden');
-        if(word.length > 0 && word.match(/^[a-zA-Z\*]+$/)) {
+        if(word.length > 0 && word.match(/^[a-zA-Z]+$/)) {
             getImages(word);
         }
         else {
