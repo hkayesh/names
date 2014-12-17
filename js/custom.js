@@ -101,9 +101,8 @@ function getImageNames() {
     var nameList = '';
     $('.js-word-content').find('img').each(function() {
         if($(this)) {
-            var letter = $(this).attr('data-letter').toUpperCase();
-            var imageIndex = $(this).attr('data-letter-index');
-            nameList += ' <span>'+letter+imageIndex+'</span>';
+            var name = $(this).attr('name').split('.');
+            nameList += ' <span>'+name[0]+'</span>';
         }
     });
     console.log(nameList);

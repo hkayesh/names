@@ -12,8 +12,7 @@ if(is_array($_FILES)) {
 
         $strLetter = $_POST['letter'];
         $strSourcePath = $_FILES['userImage']['tmp_name'];
-        $strTimeStamp = time();
-        $strImageUrl = "images/letters/" . $strLetter. '/' . $strTimeStamp . '_' . $_FILES['userImage']['name'];
+        $strImageUrl = "images/letters/" . $strLetter. '/' . $_FILES['userImage']['name'];
         $strTargetPath = '../' . $strImageUrl;
         if(move_uploaded_file($strSourcePath, $strTargetPath)) {
             echo 'success';
